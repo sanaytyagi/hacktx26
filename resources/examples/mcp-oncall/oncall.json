@@ -1,0 +1,7 @@
+{
+  "checkout": { "primary": "Dana Okoro", "secondary": "Ivan Silva", "status": "operational" },
+  "billing": { "primary": "Hana Kim", "secondary": "Gus Patel", "status": "degraded" },
+  "search": { "primary": "Eli Novak", "secondary": "Pia Moreau", "status": "operational" },
+  "auth-gateway": { "primary": "Kofi Lind", "secondary": "Ana Garcia", "status": "operational" },
+  "shipping-tracker": { "primary": "Nia Haddad", "secondary": "Oscar Nguyen", "status": "operational" }
+}

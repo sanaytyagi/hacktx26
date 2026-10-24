@@ -1,0 +1,5 @@
+# Relay Python worker — pinned versions (checked 2026-10-24, all released >= 2 weeks earlier).
+# Core (dataset profiling, splitting, baseline classifier). Light install (~150 MB).
+numpy==2.4.6
+scikit-learn==1.9.1
+pypdf==6.21.2

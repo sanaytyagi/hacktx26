@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Example Ticketing API
+  version: 1.0.0
+  description: A tiny local ticketing service used to demonstrate OpenAPI import in Relay. Synthetic.
+servers:
+  - url: http://127.0.0.1:4010
+paths:
+  /tickets:
+    get:
+      operationId: listTickets
+      summary: List tickets, optionally filtered by status or service.
+      parameters:
+        - name: status
+          in: query
+          schema: { type: string, enum: [open, resolved] }
+        - name: service
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Tickets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tickets:
+                    type: array
+                    items: { $ref: '#/components/schemas/Ticket' }
+    post:
+      operationId: createTicket
+      summary: Create a ticket in the ticketing system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NewTicket' }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Ticket' }
+  /tickets/{id}:
+    get:
+      operationId: getTicket
+      summary: Get one ticket.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Ticket
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Ticket' }
+    delete:
+      operationId: deleteTicket
+      summary: Delete a ticket.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: Deleted }
+components:
+  schemas:
+    NewTicket:
+      type: object
+      required: [title, service]
+      properties:
+        title: { type: string, description: Short title }
+        service: { type: string }
+        severity: { type: string, enum: [SEV1, SEV2, SEV3, SEV4] }
+        description: { type: string }
+    Ticket:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        service: { type: string }
+        severity: { type: string }
+        status: { type: string }
+        created_at: { type: string }

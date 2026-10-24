@@ -1,0 +1,7 @@
+# Training + local inference (PyTorch, Transformers, PEFT). Large install (~1 GB).
+-r requirements.txt
+torch==2.14.1
+transformers==5.19.0
+peft==0.21.2
+safetensors==0.8.0
+accelerate==1.15.0

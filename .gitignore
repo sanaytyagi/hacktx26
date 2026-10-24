@@ -1,0 +1,12 @@
+node_modules/
+out/
+dist/
+release/
+python/.venv/
+python/.pip-install.log
+__pycache__/
+*.pyc
+.env
+.relay-test*/
+plugins/*/dist/
+*.tsbuildinfo
